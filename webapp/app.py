@@ -1,6 +1,7 @@
 
 
 from fastapi import FastAPI
+from webapp.middleware.api_record import ApiRecordMiddleware
 
 APP_NAME = "explore-fastapi"
 
@@ -16,4 +17,5 @@ def create_app() -> FastAPI:
         docs_url=f"/{APP_NAME}/swagger",
         redoc_url=f"/{APP_NAME}/redoc",
     )
+    app.add_middleware(ApiRecordMiddleware)
     return app
